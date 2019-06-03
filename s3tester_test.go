@@ -243,6 +243,7 @@ func testArgs(op string, endpoint string) (args parameters) {
 	args.optype = op
 	args.bucketname = "test"
 	args.objectprefix = "object"
+	args.objectdelimiter = "-"
 	args.nrequests = &nrequests
 	return
 }

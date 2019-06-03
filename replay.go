@@ -185,7 +185,7 @@ func generateRequests(args *parameters, ratios []opTrack, workload *workloadPara
 		leftover := math.Min(100.0, float64(totalOps-sent))
 		for _, v := range ratios {
 			for i := 0; i < int(math.Floor((float64(v.Ratio)/100.0)*leftover)); i++ {
-				op := s3op{Event: v.Optype, Size: uint64(args.osize), Bucket: args.bucketname, Key: args.objectprefix + "-" + strconv.FormatInt(v.sent, 10)}
+				op := s3op{Event: v.Optype, Size: uint64(args.osize), Bucket: args.bucketname, Key: args.objectprefix + args.objectdelimiter + strconv.FormatInt(v.sent, 10)}
 				sent += 1
 				v.sent += 1
 				sendS3op(op, workload, args.endpoints[0], args.region)

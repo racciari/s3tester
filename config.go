@@ -42,6 +42,7 @@ type parameters struct {
 	optype             string
 	bucketname         string
 	objectprefix       string
+	objectdelimiter    string
 	tagging            string
 	metadata           string
 	consistencyControl string
@@ -98,6 +99,7 @@ func parse(cmdline []string) (parameters, error) {
 	var optype = flags.String("operation", "put", "operation type: "+operationListString)
 	var bucketname = flags.String("bucket", "test", "bucket name (needs to exist)")
 	var objectprefix = flags.String("prefix", "testobject", "object name prefix")
+	var objectdelimiter = flags.String("delimiter", "-", "object name delimiter")
 	var tagging = flags.String("tagging", "", "The tag-set for the object. The tag-set must be formatted as such: 'tag1=value1&tage2=value2'. Used for put, puttagging, putget and putget9010r.")
 	var metadata = flags.String("metadata", "", "The metadata to use for the objects. The string must be formatted as such: 'key1=value1&key2=value2'. Used for put, updatemeta, multipartput, putget and putget9010r.")
 	var cpuprofile = flags.String("cpuprofile", "", "write cpu profile to file")
@@ -286,6 +288,7 @@ func parse(cmdline []string) (parameters, error) {
 		optype:             *optype,
 		bucketname:         *bucketname,
 		objectprefix:       *objectprefix,
+		objectdelimiter:    *objectdelimiter,
 		ratePerSecond:      ratePerSecond,
 		logging:            *logdetail != "",
 		logdetail:          *logdetail,

@@ -312,9 +312,9 @@ func worker(results chan<- result, args parameters, credentials *credentials.Cre
 			case 1:
 				keyName = args.objectprefix
 			case 2:
-				keyName = args.objectprefix + "-" + strconv.FormatInt(j, 10)
+				keyName = args.objectprefix + args.objectdelimiter + strconv.FormatInt(j, 10)
 			default:
-				keyName = args.objectprefix + "-" + strconv.FormatInt(int64(id)*maxRequestsPerWorker+j, 10)
+				keyName = args.objectprefix + args.objectdelimiter + strconv.FormatInt(int64(id)*maxRequestsPerWorker+j, 10)
 			}
 
 			r.incrementUniqObjNumCount(args.duration.set)

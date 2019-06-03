@@ -38,6 +38,10 @@ func TestDefaultArgs(t *testing.T) {
 		t.Fatalf("wrong default objectprefix: %v", args.objectprefix)
 	}
 
+	if args.objectdelimiter != "-" {
+		t.Fatalf("wrong default objectdelimiter: %v", args.objectdelimiter)
+	}
+
 	if args.tagging != "" {
 		t.Fatalf("wrong default tagging: %v", args.tagging)
 	}

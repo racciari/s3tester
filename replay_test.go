@@ -24,6 +24,7 @@ func argGenerator() (args parameters) {
 	args.osize = 20
 	args.bucketname = "not"
 	args.objectprefix = "testobject"
+	args.objectdelimiter = "-"
 	args.nrequests = &nrequests
 	return
 }

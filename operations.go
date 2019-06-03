@@ -370,7 +370,7 @@ func DispatchOperation(svc s3iface.S3API, hclient *http.Client, op, keyName stri
 			objnum = rand.Int63n(randMax)
 		}
 
-		key := args.objectprefix + "-" + strconv.FormatInt(objnum, 10)
+		key := args.objectprefix + args.objectdelimiter + strconv.FormatInt(objnum, 10)
 		var retrievedBytes int64
 		if retrievedBytes, err = Get(svc, args.bucketname, key, args.objrange, args.verify, args.partsize); err == nil {
 			r.sumObjSize += retrievedBytes
